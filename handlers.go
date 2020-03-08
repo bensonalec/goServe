@@ -55,7 +55,7 @@ func (s *server) handleIndex() http.HandlerFunc {
 				fmt.Println("Serving:","/" + spl[1]+ "/" +  spl[2] + ".html")
 			} else {
 				fmt.Println("Serving 404")
-				err = servePage(w,r,"404.html")
+				http.Redirect(w,r,"/",http.StatusSeeOther)
 			}
 			
 		} else if(contains(fileList,spl[1]+".html")) {
@@ -67,7 +67,7 @@ func (s *server) handleIndex() http.HandlerFunc {
 		} else {
 			//serve the 404 page
 			fmt.Println("Served 404")
-			err = servePage(w,r,"404.html")
+			http.Redirect(w,r,"/",http.StatusSeeOther)
 		}
 		if err != nil {
 			fmt.Println("Error loading page")
