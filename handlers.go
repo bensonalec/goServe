@@ -29,7 +29,7 @@ func (s *server) handleIndex() http.HandlerFunc {
 		}
 
 		spl := strings.Split(r.URL.String(),"/")
-
+		fmt.Println(spl)
 		if(spl[1] == "") {
 			//serve the home page
 			fmt.Println("Served index")
@@ -62,6 +62,8 @@ func (s *server) handleIndex() http.HandlerFunc {
 			//serve the file in spl[0]
 			fmt.Println("Serving",spl[1])
 			err = servePage(w,r,""+ spl[1] +".html")
+		} else if(spl[1] == "favicon.ico") {
+
 		} else {
 			//serve the 404 page
 			fmt.Println("Served 404")

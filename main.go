@@ -18,6 +18,8 @@ func (s *server) routes() {
 	http.Handle("/html/", http.StripPrefix("/html/", http.FileServer(http.Dir("html"))))
 	fs := http.FileServer(http.Dir("css"))
 	http.Handle("/css/", http.StripPrefix("/css/", fs)) 
+	http.Handle("/js/", http.StripPrefix("/js/", http.FileServer(http.Dir("js"))))
+	http.Handle("/img/", http.StripPrefix("/img/", http.FileServer(http.Dir("img")))) 
 	
 }
 
